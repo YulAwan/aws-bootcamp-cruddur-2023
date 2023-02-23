@@ -18,6 +18,7 @@ https://lucid.app/lucidchart/f7331734-2cd1-4649-8cb8-9b7ce4fb80fc/edit?viewport_
 
 ###Create a Billing Alarm
 ![SNS Topic](assets/SNS%20topic.png)
+![Billing Alarm](assets/Billing_alarm_Week0.png)
 
 ###Create a Budget
 
