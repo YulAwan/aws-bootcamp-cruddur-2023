@@ -172,7 +172,7 @@ def data_home():
   try:
     claims = cognito_jwt_token.verify(access_token)
     # authenicatied request
-    app.logger.debug("authenicated")
+    app.logger.debug("authenticated")
     app.logger.debug(claims)
     app.logger.debug(claims['username'])
     data = HomeActivities.run(cognito_user_id=claims['username'])
@@ -180,6 +180,7 @@ def data_home():
   #unauthenticated request
     app.logger.debug(e)
     app.logger.debug('unauthenticated')
+    data = HomeActivities.run()
   return data, 200
 
 @app.route("/api/activities/notifications", methods=['GET'])
