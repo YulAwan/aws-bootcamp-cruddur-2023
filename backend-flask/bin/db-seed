@@ -17,4 +17,4 @@ else
   URL=$CONNECTION_URL
 fi
 
-psql $CONNECTION_URL cruddur < $seed_path
+psql $URL cruddur < $seed_path
