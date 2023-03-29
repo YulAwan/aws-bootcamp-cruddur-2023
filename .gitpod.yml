@@ -11,7 +11,7 @@ tasks:
   - name: react-js
     command: |
       cd / frontend-react-js
-      npm i 
+      sudo npm i 
 
   - name: postgres
     init: |
