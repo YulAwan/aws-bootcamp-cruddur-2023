@@ -38,7 +38,7 @@ class Db:
   def print_sql(self,title,sql):
     cyan = '\033[96m'
     no_color = '\033[0m'
-    print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
+    print(f'{cyan} SQL STATEMENT: [{title}]------{no_color}')
     print(sql)
     
   def query_commit(self,sql,params={}):
@@ -70,7 +70,6 @@ class Db:
         return json[0]
   # When we want to return an array of json objects
   def query_object_json(self,sql,params={}):
-
     self.print_sql('json',sql)
     self.print_params(params)
     wrapped_sql = self.query_wrap_object(sql)
