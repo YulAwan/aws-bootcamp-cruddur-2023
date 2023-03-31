@@ -38,7 +38,7 @@ class Db:
   def print_sql(self,title,sql):
     cyan = '\033[96m'
     no_color = '\033[0m'
-    print(f'{cyan} SQL STATEMENT: [{title}]------{no_color}')
+    print(f'{cyan} SQL STATEMENT-[{title}]------{no_color}')
     print(sql)
     
   def query_commit(self,sql,params={}):
@@ -83,7 +83,7 @@ class Db:
         else:
           return json[0]
 
-def query_wrap_object(template):
+def query_wrap_object(self,template):
   sql = f"""
   (SELECT COALESCE(row_to_json(object_row),'{{}}'::json) FROM (
   {template}
@@ -91,7 +91,7 @@ def query_wrap_object(template):
   """
   return sql
 
-def query_wrap_array(template):
+def query_wrap_array(self,template):
   sql = f"""
   (SELECT COALESCE(array_to_json(array_agg(row_to_json(array_row))),'[]'::json) FROM (
   {template}
@@ -116,7 +116,7 @@ def print_sql_err(self,err):
 
 #connection_url = os.getenv("CONNECTION_URL")
 #pool = ConnectionPool(connection_url)
-db=Db()
+db = Db()
 
 #connection_url = os.getenv("CONNECTION_URL")
 #pool = ConnectionPool(connection_url)
