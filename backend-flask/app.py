@@ -150,9 +150,6 @@ def data_message_groups():
 
 @app.route("/api/messages/<string:message_group_uuid>", methods=['GET'])
 def data_messages(message_group_uuid):
-  user_sender_handle = 'andrewbrown'
-  user_receiver_handle = request.args.get('user_reciever_handle')
-
   access_token = extract_access_token(request.headers)
   try:
     claims = cognito_jwt_token.verify(access_token)
@@ -235,7 +232,7 @@ def data_notifications():
   data = NotificationsActivities.run()
   return data, 200
 
-@app.route("/api/activities/@<string:handle>", methods=['GET'])
+@app.route("/api/activities/<string:handle>", methods=['GET'])
 def data_handle(handle):
   model = UserActivities.run(handle)
   if model['errors'] is not None:

@@ -47,20 +47,22 @@ class Ddb:
       })
     return results
   def list_messages(client,message_group_uuid):
+    year = str(datetime.now().year)
     table_name = 'cruddur-messages'
     query_params = {
       'TableName': table_name,
-      'KeyConditionExpression': 'pk = :pkey',
+      'KeyConditionExpression': 'pk = :pk AND begins_with(sk,:year)',
       'ScanIndexForward': False,
       'Limit': 20,
       'ExpressionAttributeValues': {
-        ':pkey': {'S': f"MSG#{message_group_uuid}"}
+        ':year': {'S': year },
+        ':pk': {'S': f"MSG#{message_group_uuid}"}
       }
     }
 
     response = client.query(**query_params)
     items = response['Items']
-    
+    items.reverse()
     results = []
     for item in items:
       created_at = item['sk']['S']
