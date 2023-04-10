@@ -4,7 +4,7 @@ import boto3
 import os
 import sys
 
-print("== db-update-cognito-user-ids")
+print("=== db_update_cognito_user_ids")
 
 current_path = os.path.dirname(os.path.abspath(__file__))
 parent_path = os.path.abspath(os.path.join(current_path, '..'))
